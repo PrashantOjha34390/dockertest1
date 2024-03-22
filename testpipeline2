@@ -1,6 +1,6 @@
 pipeline {
     environment {
-       registry = 'vinaykumar331/app'
+       registry = 'prashant34390/app'
        dockerhost = '12.0.2.210'
            }
        
@@ -19,10 +19,10 @@ pipeline {
         stage('Push Image to DockerHub & clean up locally') { 
             steps {
                 withCredentials([string(credentialsId: 'DockerHub_id', variable: 'DockerHub_Credentilas')]) {
-                sh "docker login -u vinaykumar331 -p ${DockerHub_Credentilas}"
+                sh "docker login -u prashant34390 -p ${DockerHub_Credentilas}"
                 sh "docker push $registry:v$BUILD_NUMBER"
                 sh "docker rmi $registry:v$BUILD_NUMBER"
-               }
+              }
               }
             }
          stage('Deploy cointainer') { 
